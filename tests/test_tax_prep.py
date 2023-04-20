@@ -139,6 +139,7 @@ def new_valid_deductions():
         "child": 5000,
         "tuition": 5000,
         "healthcare": 5000,
+        "home office": 5000,
         "sales tax": 5000
     }
     
@@ -174,6 +175,13 @@ def test_applies_itemized_deductions(all_valid_deductions):
 
     assert deducted_income == 25000
 
+def test_applies_new_itemized_deductions(new_valid_deductions):
+    income = 50000
+
+    deducted_income = calculate_deducted_income_2020(income, new_valid_deductions)
+
+    assert deducted_income == 25000
+    
 def test_ignores_invalid_itemized_deductions(some_invalid_deductions):
     income = 50000
 
